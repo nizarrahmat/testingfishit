@@ -362,7 +362,10 @@ local function FishingV2Loop()
 				Image = 4483362458
 			})
             task.wait(FishingV2State.RodDelay)
-            
+             local success, obtainedNewFishNotification = pcall(function()
+				return ReplicatedStorage.Packages._Index["sleitnick_net@0.2.0"].net["RE/ObtainedNewFishNotification"]
+			end)
+			
 			if not success or not obtainedNewFishNotification then
 				warn("❌ Failed to find ObtainedNewFishNotification remote")
 				return false
