@@ -283,7 +283,8 @@ local function UpdateRodDelay(showNotify)
     
     if rodName and RodDelays[rodName] then
         FishingV2State.DetectedRod = rodName
-        FishingV2State.RodDelay = RodDelays[rodName]
+        -- FishingV2State.RodDelay = RodDelays[rodName]
+        FishingV2State.RodDelay = 0.1
         FishingV2State.DelayInitialized = true
         
         if showNotify and Window then
@@ -355,8 +356,8 @@ local function FishingV2Loop()
 
             -- Wait based on detected rod
 			Rayfield:Notify({
-				Title = "Waiting",
-				Content = "Game Auto System Activated!",
+				Title = "Rod Delay",
+				Content = FishingV2State.RodDelay,
 				Duration = FishingV2State.RodDelay,
 				Image = 4483362458
 			})
@@ -371,6 +372,13 @@ local function FishingV2Loop()
         end)
         
         if not success then 
+			Rayfield:Notify({
+				Title = "Rod Delay Error",
+				Content = FishingV2State.RodDelay,
+				Duration = FishingV2State.RodDelay,
+				Image = 4483362458
+			})
+			
             warn("[V2 ERROR]: " .. tostring(errorMessage))
             task.wait(2)
         end
