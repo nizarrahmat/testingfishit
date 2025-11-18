@@ -283,8 +283,8 @@ local function UpdateRodDelay(showNotify)
     
     if rodName and RodDelays[rodName] then
         FishingV2State.DetectedRod = rodName
-        -- FishingV2State.RodDelay = RodDelays[rodName]
-        FishingV2State.RodDelay = 0.1
+        FishingV2State.RodDelay = RodDelays[rodName]
+        -- FishingV2State.RodDelay = 0.1
         FishingV2State.DelayInitialized = true
         
         if showNotify and Window then
