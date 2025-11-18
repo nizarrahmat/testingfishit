@@ -363,6 +363,11 @@ local function FishingV2Loop()
 			})
             task.wait(FishingV2State.RodDelay)
             
+			if not success or not obtainedNewFishNotification then
+				warn("❌ Failed to find ObtainedNewFishNotification remote")
+				return false
+			end
+			
             -- Finish
             if RemoteReferences.FinishRemote then
                RemoteReferences.FinishRemote:FireServer()
