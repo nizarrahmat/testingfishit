@@ -354,6 +354,12 @@ local function FishingV2Loop()
             end
 
             -- Wait based on detected rod
+			Rayfield:Notify({
+				Title = "Waiting",
+				Content = "Game Auto System Activated!",
+				Duration = FishingV2State.RodDelay,
+				Image = 4483362458
+			})
             task.wait(FishingV2State.RodDelay)
             
             -- Finish
